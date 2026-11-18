@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: dar-wasalt-assistant
+    runtime: docker
+    plan: free
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: OPENROUTER_MODEL
+        value: openrouter/free
+      - key: OPENROUTER_API_KEY
+        sync: false
