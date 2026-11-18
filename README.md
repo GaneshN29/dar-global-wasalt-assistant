@@ -44,6 +44,10 @@ docker run --rm -p 8501:8501 `
 
 Open `http://localhost:8501`. Configure a persistent volume at `/app/data` when deploying so the indexed corpus survives restarts.
 
+## Git workflow
+
+This project uses GitHub Flow: keep `main` deployable, make changes on short-lived `feature/`, `fix/`, or `docs/` branches, and open a pull request before merging into `main`. Use Conventional Commit subjects such as `feat: add source filters`, `fix: handle empty search results`, or `docs: clarify deployment`. Squash-merge pull requests and delete the merged branch. Store API keys only in environment settings, never in commits.
+
 ## Deploy on Render
 
 The included `render.yaml` defines a Docker web service with a health check. Connect the GitHub repository to Render and deploy the blueprint, then set `OPENROUTER_API_KEY` in the Render service's environment settings. `OPENROUTER_MODEL` defaults to `openrouter/free`. After deployment, open the app and select **Update website information** to build its public-page index. Without a persistent disk, the index may need to be refreshed after a service restart or redeploy.
